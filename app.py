@@ -42,7 +42,28 @@ stroke_width = st.sidebar.slider('Selecciona el ancho de línea', 1, 30, 5)
 stroke_color = "#000000" 
 bg_color = '#FFFFFF'
 #realtime_update = st.sidebar.checkbox("Update in realtime", True)
+with st.sidebar:
+    st.subheader("Propiedades del Tablero")
 
+    # Canvas dimensions (moved to the top)
+    st.subheader("Dimensiones del Tablero")
+    canvas_width = st.slider("Ancho del tablero", 300, 700, 500, 50)
+    canvas_height = st.slider("Alto del tablero", 200, 600, 300, 50)
+
+    # Drawing mode selector
+    drawing_mode = st.selectbox(
+        "Herramienta de Dibujo:",
+        ("freedraw", "line", "rect", "circle", "transform", "polygon", "point"),
+    )
+
+    # Stroke width slider
+    stroke_width = st.slider("Selecciona el ancho de línea", 1, 30, 15)
+
+    # Stroke color picker
+    stroke_color = st.color_picker("Color de trazo", "#FFFFFF")
+
+    # Background color
+    bg_color = st.color_picker("Color de fondo", "#000000")
 
 # Create a canvas component
 canvas_result = st_canvas(
